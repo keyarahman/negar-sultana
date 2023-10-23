@@ -9,7 +9,7 @@ export default config({
       : {
           kind: "github",
           repo: {
-            name: "keyarahman",
+            name: "negar-sultana",
             owner: "keyarahman",
           },
         },
