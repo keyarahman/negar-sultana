@@ -1,0 +1,60 @@
+---
+import RootLayout from "@/layouts/RootLayout.astro";
+import type { InferGetStaticPropsType } from "astro";
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+import { format } from "date-fns";
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection("posts");
+
+  return allPosts.map((post) => {
+    return {
+      params: { slug: post.slug },
+      props: post,
+    };
+  });
+}
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const {
+  data: { title, description, tags, publishDate, coverImage },
+  render,
+} = Astro.props;
+const { Content } = await render();
+---
+
+<RootLayout title={title} description={description} keywords={tags}>
+  <main
+    class="container mx-auto w-full space-y-8 px-4 py-8 md:max-w-screen-md lg:space-y-16 lg:py-16"
+  >
+    <article>
+      <h2 class="text-4xl font-bold text-zinc-950 dark:text-zinc-50">
+        {title}
+      </h2>
+      <p class="mb-8 mt-4 text-lg text-zinc-600 dark:text-zinc-300">
+        Published
+        <span>
+          {format(new Date(publishDate), "MMMM dd, yyy")}
+        </span>
+      </p>
+
+      {
+        !!coverImage && (
+          <Image
+            src={coverImage}
+            alt={title}
+            class="my-8 aspect-video w-full object-cover"
+            width={800}
+            height={600}
+          />
+        )
+      }
+
+      <div class="prose max-w-none dark:prose-invert md:prose-lg">
+        <Content />
+      </div>
+    </article>
+  </main>
+</RootLayout>

@@ -1,0 +1,60 @@
+---
+import Footer from "@/components/Footer.astro";
+import Header from "@/components/Header.astro";
+
+type Props = {
+  title?: string | undefined;
+  description?: string;
+  keywords?: string[] | undefined;
+};
+
+const {
+  title = "Negar Sultana",
+  description = "Hey, I'm Negar Sultana. I'm a programmer, designer and solopreneur",
+  keywords = [],
+} = Astro.props;
+---
+
+<html lang="en" class="overflow-y-scroll">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords.join(",")} />
+    <!-- Tinybird Web Analytics -->
+    {
+      process.env.NODE_ENV === "production" && (
+        <script
+          defer
+          src="https://unpkg.com/@tinybirdco/flock.js"
+          data-host="https://api.us-east.tinybird.co"
+          data-token="p.eyJ1IjogImUwMzI1YTE1LTRkMTItNDE4Zi1iMzZlLWM4OGM4ZjMyZWM2NCIsICJpZCI6ICI3NWRlZmI2NS01OTg0LTQyZmItOGQyNC04OTM1MzRkNDM5MTAiLCAiaG9zdCI6ICJ1c19lYXN0In0.7fpoZhGELSBJF-drMYUSsM3KzAp57NheZI5nD2Wq5Hw"
+        />
+      )
+    }
+    <!-- SupaBot AI -->
+    <script
+      async
+      src="https://supabotai.com/api/widget/js?id=clm29uwbn0001l20883uegbig"
+    ></script>
+  </head>
+  <body
+    class="flex min-h-screen flex-col bg-white text-zinc-950 dark:bg-zinc-950 dark:text-zinc-50"
+  >
+    <Header />
+    <div class="flex-1">
+      <slot />
+    </div>
+    <Footer />
+    <style is:global>
+      @media (prefers-color-scheme: dark) {
+        html {
+          color-scheme: dark;
+        }
+      }
+    </style>
+  </body>
+</html>

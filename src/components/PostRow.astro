@@ -1,0 +1,38 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { format } from "date-fns";
+type Props = {
+  data: CollectionEntry<"posts">;
+};
+const {
+  data: {
+    data: { title, description, publishDate },
+    slug,
+  },
+} = Astro.props;
+---
+
+<article class="grid max-md:relative max-md:gap-2 md:grid-cols-4">
+  <time
+    datetime={format(new Date(publishDate), "yyyy-dd-mm")}
+    class="my-1 text-zinc-500 dark:text-zinc-400"
+  >
+    {format(new Date(publishDate), "MMM dd, yyyy")}
+  </time>
+  <div class="group md:relative md:col-span-3">
+    <h3 class="line-clamp-2 text-lg font-semibold">
+      <div
+        class="absolute -inset-4 -z-10 rounded-lg bg-zinc-100 opacity-0 group-hover:opacity-100 dark:bg-zinc-900"
+      >
+      </div>
+      <a href={`/posts/${slug}`}>
+        <span class="absolute -inset-4 z-10"></span>
+        {title}
+      </a>
+    </h3>
+
+    <p class="my-1 line-clamp-2 text-zinc-600 dark:text-zinc-300">
+      {description}
+    </p>
+  </div>
+</article>

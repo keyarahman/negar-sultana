@@ -1,0 +1,54 @@
+---
+import { Image } from "astro:assets";
+---
+
+<header
+  class="border-zinc-200 dark:border-zinc-800 max-lg:border-b max-lg:pb-10"
+>
+  <div class="container mx-auto flex h-16 items-center px-4 xl:max-w-screen-lg">
+    <a href="/" class="mr-12 text-2xl font-bold">Negar</a>
+    <div class="max-lg:absolute max-lg:left-0 max-lg:right-0 max-lg:top-12">
+      <nav
+        class="flex h-12 max-w-screen-md items-center gap-6 px-4 max-lg:container max-lg:mx-auto"
+      >
+        <a href="/" class="lg:hidden">Home</a>
+        <a href="/posts">Posts</a>
+        <a href="/projects">Projects</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+      </nav>
+    </div>
+    <div class="flex-1 items-center justify-end">
+      <nav class="flex items-center justify-end gap-6">
+        <a
+          target="_blank"
+          rel="me"
+          href="https://github.com/keyarahman"
+          title="Github"
+        >
+          <Image
+            src="/icons/github.svg"
+            alt="Github Icon"
+            class="h-5 w-5 object-contain dark:invert"
+            width={24}
+            height={24}
+          />
+        </a>
+        <a
+          target="_blank"
+          rel="me"
+          href="https://instagram.com"
+          title="Instagram"
+        >
+          <Image
+            src="/icons/instagram.svg"
+            alt="Instagram Icon"
+            class="h-5 w-5 object-contain dark:invert"
+            width={24}
+            height={24}
+          />
+        </a>
+      </nav>
+    </div>
+  </div>
+</header>
