@@ -57,60 +57,60 @@ export default config({
         }),
       },
     }),
-    posts: collection({
-      label: "Posts",
-      path: "src/content/posts/*/",
-      slugField: "title",
-      format: { contentField: "content" },
-      entryLayout: "content",
-      schema: {
-        title: fields.slug({
-          name: {
-            label: "Title",
-            validation: {
-              length: {
-                max: 100,
-              },
-            },
-          },
-        }),
-        description: fields.text({
-          label: "Description",
-          multiline: true,
-          validation: {
-            length: {
-              max: 300,
-            },
-          },
-        }),
-        isDraft: fields.checkbox({
-          label: "Draft",
-          description:
-            "Set this post as draft to prevent it from being published",
-          defaultValue: true,
-        }),
-        coverImage: fields.image({
-          label: "Cover Iamge",
-          directory: "public/images/posts",
-          publicPath: "/images/posts/",
-        }),
-        publishDate: fields.date({
-          label: "Publish Date",
-          defaultValue: { kind: "today" },
-        }),
-        content: fields.document({
-          label: "Content",
-          formatting: true,
-          dividers: true,
-          links: true,
-          tables: true,
-          images: {
-            directory: "public/images/posts",
-            publicPath: "/images/posts/",
-          },
-        }),
-      },
-    }),
+    // posts: collection({
+    //   label: "Posts",
+    //   path: "src/content/posts/*/",
+    //   slugField: "title",
+    //   format: { contentField: "content" },
+    //   entryLayout: "content",
+    //   schema: {
+    //     title: fields.slug({
+    //       name: {
+    //         label: "Title",
+    //         validation: {
+    //           length: {
+    //             max: 100,
+    //           },
+    //         },
+    //       },
+    //     }),
+    //     description: fields.text({
+    //       label: "Description",
+    //       multiline: true,
+    //       validation: {
+    //         length: {
+    //           max: 300,
+    //         },
+    //       },
+    //     }),
+    //     isDraft: fields.checkbox({
+    //       label: "Draft",
+    //       description:
+    //         "Set this post as draft to prevent it from being published",
+    //       defaultValue: true,
+    //     }),
+    //     coverImage: fields.image({
+    //       label: "Cover Iamge",
+    //       directory: "public/images/posts",
+    //       publicPath: "/images/posts/",
+    //     }),
+    //     publishDate: fields.date({
+    //       label: "Publish Date",
+    //       defaultValue: { kind: "today" },
+    //     }),
+    //     content: fields.document({
+    //       label: "Content",
+    //       formatting: true,
+    //       dividers: true,
+    //       links: true,
+    //       tables: true,
+    //       images: {
+    //         directory: "public/images/posts",
+    //         publicPath: "/images/posts/",
+    //       },
+    //     }),
+    //   },
+    // }),
     projects: collection({
       label: "Projects",
       path: "src/content/projects/*/",

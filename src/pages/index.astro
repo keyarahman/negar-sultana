@@ -1,17 +1,17 @@
 ---
 import { getCollection } from "astro:content";
 import RootLayout from "@/layouts/RootLayout.astro";
-import { compareDesc } from "date-fns";
-import PostRow from "@/components/PostRow.astro";
+// import { compareDesc } from "date-fns";
+// import PostRow from "@/components/PostRow.astro";
 
-const allPosts = await getCollection("posts");
-const recentPosts = allPosts
-  .sort((a, b) =>
-    compareDesc(new Date(a.data.publishDate), new Date(b.data.publishDate))
-  )
-  .slice(0, 5);
+// const allPosts = await getCollection("posts");
+// const recentPosts = allPosts
+//   .sort((a, b) =>
+//     compareDesc(new Date(a.data.publishDate), new Date(b.data.publishDate))
+//   )
+//   .slice(0, 5);
 const aboutPage = (await getCollection("pages")).find(
-  (page) => page.slug === "about"
+  (page) => page.slug === "about",
 );
 const { Content } = await aboutPage!.render();
 ---
@@ -25,7 +25,7 @@ const { Content } = await aboutPage!.render();
         <Content />
       </article>
     </section>
-    <section id="recent-posts" class="my-16">
+    <!-- <section id="recent-posts" class="my-16">
       <p
         class="mb-4 text-2xl font-medium text-zinc-500 underline underline-offset-4 dark:text-zinc-400"
       >
@@ -34,6 +34,6 @@ const { Content } = await aboutPage!.render();
       <div class="space-y-8 py-8">
         {recentPosts.map((post) => <PostRow data={post} />)}
       </div>
-    </section>
+    </section> -->
   </main>
 </RootLayout>
