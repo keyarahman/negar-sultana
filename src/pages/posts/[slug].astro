@@ -5,16 +5,18 @@ import { Image } from "astro:assets";
 // import { getCollection } from "astro:content";
 import { format } from "date-fns";
 
-// export async function getStaticPaths() {
-//   const allPosts = await getCollection("posts");
+export async function getStaticPaths() {
+  // const allPosts = await getCollection("posts");
 
-//   return allPosts.map((post) => {
-//     return {
-//       params: { slug: post.slug },
-//       props: post,
-//     };
-//   });
-// }
+  // return allPosts.map((post) => {
+  //   return {
+  //     params: { slug: post.slug },
+  //     props: post,
+  //   };
+  // });
+
+  return [];
+}
 
 // type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
